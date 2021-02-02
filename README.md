@@ -2,7 +2,7 @@
 
 This repository contains exmaple compose files and associated configuration that we use internally at [Konbabos Consulting](https://www.konabos.com). It is loosely based off the orignal [Docker Examples repo](https://github.com/Sitecore/docker-examples) - be sure to look through that repo and read the documentation provided there.
 
-The examples contained in this repo were designed to allow us to quickly get up and running on a project or just for personal hacking. 
+The examples contained in this repo were designed to allow us to quickly get up and running on a project or just for personal hacking and intended for local development purposes.
 
 Some features:
 - Folder based license mount. Simply copy your `license.xml` file to the license folder

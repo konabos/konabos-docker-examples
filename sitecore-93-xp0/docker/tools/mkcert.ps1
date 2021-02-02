@@ -10,7 +10,7 @@ Param(
     $FullHostName
 )
 
-Push-Location traefik\certs
+Push-Location ..\traefik\certs
 try {
     $mkcert = ".\mkcert.exe"
     if ($null -ne (Get-Command mkcert.exe -ErrorAction SilentlyContinue)) {

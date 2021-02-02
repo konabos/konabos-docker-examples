@@ -13,13 +13,13 @@ Param (
     # We do not need to use [SecureString] here since the value will be stored unencrypted in .env,
     # and used only for transient local example environment.
     [string]
-    [Alias("ap")]
+    [Alias("a")]
     $SitecoreAdminPassword = "b",
     
     # We do not need to use [SecureString] here since the value will be stored unencrypted in .env,
     # and used only for transient local example environment.
     [string]
-    [Alias("sp")]
+    [Alias("sa")]
     $SqlSaPassword = "Password12345"
 )
 
