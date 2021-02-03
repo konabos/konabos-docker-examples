@@ -10,8 +10,6 @@ Param(
     $FullHostName
 )
 
-Write-Host $PSScriptRoot
-
 Push-Location (Join-Path $PSScriptRoot ..\traefik\certs)
 try {
     $mkcert = ".\mkcert.exe"

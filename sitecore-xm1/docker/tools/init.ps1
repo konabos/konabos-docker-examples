@@ -73,20 +73,20 @@ Set-DockerComposeEnvFileVariable "CM_HOST" -Value "cm.$($FullHostName)" -Path $P
 Set-DockerComposeEnvFileVariable "ID_HOST" -Value "id.$($FullHostName)" -Path $Path
 
 # REPORTING_API_KEY = random 64-128 chars
-#Set-DockerComposeEnvFileVariable "REPORTING_API_KEY" -Value (Get-SitecoreRandomString 64 -DisallowSpecial) -Path $Path
+Set-DockerComposeEnvFileVariable "REPORTING_API_KEY" -Value (Get-SitecoreRandomString 64 -DisallowSpecial) -Path $Path
 
 # TELERIK_ENCRYPTION_KEY = random 64-128 chars
 Set-DockerComposeEnvFileVariable "TELERIK_ENCRYPTION_KEY" -Value (Get-SitecoreRandomString 128) -Path $Path
 
 # SITECORE_IDSECRET = random 64 chars
-#Set-DockerComposeEnvFileVariable "SITECORE_IDSECRET" -Value (Get-SitecoreRandomString 64 -DisallowSpecial) -Path $Path
+Set-DockerComposeEnvFileVariable "SITECORE_IDSECRET" -Value (Get-SitecoreRandomString 64 -DisallowSpecial) -Path $Path
 
 # SITECORE_ID_CERTIFICATE
 $idCertPassword = Get-SitecoreRandomString 12 -DisallowSpecial
-#Set-DockerComposeEnvFileVariable "SITECORE_ID_CERTIFICATE" -Value (Get-SitecoreCertificateAsBase64String -DnsName "localhost" -Password (ConvertTo-SecureString -String $idCertPassword -Force -AsPlainText)) -Path $Path
+Set-DockerComposeEnvFileVariable "SITECORE_ID_CERTIFICATE" -Value (Get-SitecoreCertificateAsBase64String -DnsName "localhost" -Password (ConvertTo-SecureString -String $idCertPassword -Force -AsPlainText)) -Path $Path
 
 # SITECORE_ID_CERTIFICATE_PASSWORD
-#Set-DockerComposeEnvFileVariable "SITECORE_ID_CERTIFICATE_PASSWORD" -Value $idCertPassword -Path $Path
+Set-DockerComposeEnvFileVariable "SITECORE_ID_CERTIFICATE_PASSWORD" -Value $idCertPassword -Path $Path
 
 ##################################
 # Configure TLS/HTTPS certificates
