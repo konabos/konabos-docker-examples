@@ -7,14 +7,15 @@ param(
 docker system prune -f
 
 # Clean the data
+$Path = "$PSScriptRoot\data"
 if ($IncludeDatabases)
 {
   Write-Host "Cleaning all data..." -ForegroundColor DarkRed -BackgroundColor Yellow
-  git clean -xdf ./data
+  git clean -xdf $Path
 }
 else 
 {
   Write-Host "Cleaning data but not databases..." -ForegroundColor DarkRed -BackgroundColor Yellow
-  git clean -xdf ./data -e *.mdf -e *.ldf
+  git clean -xdf $Path -e *.mdf -e *.ldf
 }
  
