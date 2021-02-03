@@ -20,7 +20,8 @@ $url = Get-EnvVar -Key CM_HOST
 
 $licensePath = Get-EnvVar -Key LICENSE_PATH
 if (-not (Test-Path (Join-Path $licensePath "license.xml"))) {
-    throw "License file not present in folder."
+    Write-Host "License file not present in folder." -ForegroundColor Red
+    Break
 }
 
 #----------------------------------------------------------
