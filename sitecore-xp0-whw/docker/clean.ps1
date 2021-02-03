@@ -3,7 +3,7 @@ param(
   [switch]$IncludeDatabases
 )
 
-# Remove all unsused conrainers, networks, images, volumes
+# Remove all unsused containers, networks, images, volumes
 docker system prune -f
 
 # Clean the data

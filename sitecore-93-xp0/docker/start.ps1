@@ -32,13 +32,13 @@ if (-not (Test-Path .\traefik\certs\cert.pem)) {
 }
 
 #----------------------------------------------------------
-## check if user override env file exists and start docker
+## check if user override env file exists
 #----------------------------------------------------------
 
 Read-UserEnvFile
 
 #----------------------------------------------------------
-## start
+## start docker
 #----------------------------------------------------------
 
 docker-compose up -d
