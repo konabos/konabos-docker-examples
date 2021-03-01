@@ -1,4 +1,4 @@
-# Sitecore 10 XP0 with JSS Example
+# Sitecore 10 XP0 with SXA Example
 
 An example repo for running Sitecore 10 XP0 with SXA topology on Docker. 
 
