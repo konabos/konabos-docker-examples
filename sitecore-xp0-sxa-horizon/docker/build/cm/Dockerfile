@@ -35,6 +35,10 @@ RUN C:\module\tools\Initialize-Content.ps1 -TargetPath .\; `
 # Add Horizon module
 COPY --from=horizon \module\cm\content .\
 
+
+# Add fixes to Horizon configs
+COPY .\config .\App_Config\Include\
+
 # Disable Identity Server
 # RUN Copy-Item -Path 'C:\\inetpub\\wwwroot\\App_Config\\Include\\Examples\\Sitecore.Owin.Authentication.IdentityServer.Disabler.config.example' `
 #               -Destination 'C:\\inetpub\\wwwroot\\App_Config\\Include\\Sitecore.Owin.Authentication.IdentityServer.Disabler.config';
