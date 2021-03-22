@@ -20,7 +20,7 @@ COPY --from=tooling \tools\ \tools\
 WORKDIR C:\inetpub\wwwroot
 
 #Enable WebSockets
-RUN powershell -Command Add-WindowsFeature Web-WebSockets
+RUN Add-WindowsFeature Web-WebSockets
 
 # Add SPE module
 COPY --from=spe \module\cm\content .\

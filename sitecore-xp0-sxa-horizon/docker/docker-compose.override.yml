@@ -111,7 +111,7 @@ services:
     volumes:
       - ${LICENSE_PATH}:C:\license
 
-  horizon:
+  hrz:
     image: scr.sitecore.com/sxp/modules/sitecore-horizon:${HRZ_VERSION}
     isolation: ${ISOLATION}
     healthcheck:
@@ -122,7 +122,7 @@ services:
     environment:
       SITECORE_LICENSE_LOCATION: C:\license\license.xml
       Sitecore_License: ${SITECORE_LICENSE}
-      Sitecore_FederatedUI__HostBaseUrl: http://horizon
+      Sitecore_FederatedUI__HostBaseUrl: http://hrz
       Sitecore_SitecorePlatform__ContentManagementUrl: https://${CM_HOST}
       Sitecore_SitecorePlatform__ContentManagementInternalUrl: http://cm
       Sitecore_Sitecore__Authentication__OpenIdConnectOptions__RequireHttpsMetadata: "false"
@@ -132,6 +132,7 @@ services:
       Sitecore_Sitecore__Authentication__BearerAuthenticationOptions__Authority: https://${ID_HOST}
       Sitecore_Sitecore__Authentication__BearerAuthenticationOptions__InternalAuthority: http://id
       Sitecore_Sitecore__Authentication__BearerAuthenticationOptions__RequireHttpsMetadata: "false"
+      Sitecore_Plugins__Filters__ExperienceAccelerator: +SXA
     depends_on:
       id:
         condition: service_started
