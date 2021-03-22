@@ -35,7 +35,6 @@ RUN C:\module\tools\Initialize-Content.ps1 -TargetPath .\; `
 # Add Horizon module
 COPY --from=horizon \module\cm\content .\
 
-
 # Add fixes to Horizon configs
 COPY .\config .\App_Config\Include\
 
