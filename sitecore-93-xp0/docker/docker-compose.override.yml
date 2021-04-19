@@ -45,7 +45,7 @@ services:
     environment: 
       SITECORE_LICENSE_LOCATION: C:\license\license.xml
     volumes:
-      - .\data\cm\website:C:\deploy
+      - .\data\cm\website:C:\src
       - .\data\cm\logs:C:\inetpub\wwwroot\App_Data\logs
       - .\startup:C:\Healthchecks
       - ${LICENSE_PATH}:C:\license
@@ -71,7 +71,7 @@ services:
     environment: 
       SITECORE_LICENSE_LOCATION: C:\license
     volumes:
-      - .\data\xconnect:C:\deploy
+      - .\data\xconnect:C:\src
       - ${LICENSE_PATH}:C:\license
     entrypoint: powershell -Command "& C:\tools\entrypoints\iis\Development.ps1"
 
