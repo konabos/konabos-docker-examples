@@ -1,5 +1,5 @@
 ﻿Import-Module -Name (Join-Path $PSScriptRoot "..\logo")
-Import-Module -Name (Join-Path $PSScriptRoot ".\tools\config")
+Import-Module -Name (Join-Path $PSScriptRoot ".\tools\util")
 Show-Start
 
 #----------------------------------------------------------
@@ -43,5 +43,7 @@ Read-UserEnvFile
 #----------------------------------------------------------
 
 docker-compose up -d
-Write-Host "`nDone... opening https://$($url)" -ForegroundColor DarkGray
+
+Wait-SiteResponsive
+Write-Host "`n`nDone... opening https://$($url)" -ForegroundColor DarkGray
 start "https://$url"
