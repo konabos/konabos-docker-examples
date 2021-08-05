@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Settings>
+  <Sitecore>
+    <Publishing>
+      <Services>
+        <DefaultConnectionFactory>
+          <Options>
+            <Connections>
+              <!--This should be the name of the target in Sitecore -->
+              <Preview>
+                <Type>Sitecore.Framework.Publishing.Data.AdoNet.SqlDatabaseConnection, Sitecore.Framework.Publishing.Data</Type>
+                <LifeTime>Transient</LifeTime>
+                <Options>
+                  <ConnectionString>${Sitecore:Publishing:ConnectionStrings:Preview}</ConnectionString>
+                  <DefaultCommandTimeout>120</DefaultCommandTimeout>
+                  <Behaviours>
+                    <backend>sql-backend-default</backend>
+                    <api>sql-api-default</api>
+                  </Behaviours>
+                </Options>
+              </Preview>
+              <!-- This "PreviewResources" node is not specified in the documentation -->
+              <PreviewResources>
+                <Type>Sitecore.Framework.Publishing.Data.ResourceItems.ResourceConnection, Sitecore.Framework.Publishing.Data.ResourceItems</Type>
+                <LifeTime>Transient</LifeTime>
+                <Options>
+                  <Path>items</Path>
+                </Options>
+              </PreviewResources>
+            </Connections>
+          </Options>
+        </DefaultConnectionFactory>
+        <StoreFactory>
+          <Options>
+            <Stores>
+              <Targets>
+                <Preview>
+                  <Type>Sitecore.Framework.Publishing.Data.TargetStore, Sitecore.Framework.Publishing.Data</Type>
+                  <!-- The documentation shows a different way for registering the connection name -->
+                  <ConnectionNames>
+                    <preview>Preview</preview>
+                    <resources>PreviewResources</resources>
+                  </ConnectionNames>
+                  <FeaturesListName>TargetStoreFeatures</FeaturesListName>
+                  <Id>579E92A7-B094-4F17-AF51-69F7214A3678</Id>
+                  <ScDatabase>preview</ScDatabase>
+                </Preview>
+              </Targets>
+            </Stores>
+          </Options>
+        </StoreFactory>
+      </Services>
+    </Publishing>
+  </Sitecore>
+</Settings>
