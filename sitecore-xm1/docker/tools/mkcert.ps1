@@ -6,7 +6,6 @@
 Param(
     [Parameter(Mandatory = $true)]
     [ValidateNotNullOrEmpty()]
-    [string] 
     $FullHostName
 )
 
@@ -24,9 +23,18 @@ try {
             throw "Invalid mkcert.exe file"
         }
     }
+
+    $hosts = @()
+
+    foreach ($url in $FullHostName) {
+        $hosts += "*.$($url -replace '^.+?(\.)', '')"
+    }
+
+    $hosts += "*.localho.st"
+
     Write-Host "Generating Traefik TLS certificate..." -ForegroundColor Green
     & $mkcert -install
-    & $mkcert -key-file key.pem -cert-file cert.pem "*.$($FullHostName)"
+    & $mkcert -key-file key.pem -cert-file cert.pem $hosts
 }
 catch {
     Write-Host "An error occurred while attempting to generate TLS certificate: $_" -ForegroundColor Red
