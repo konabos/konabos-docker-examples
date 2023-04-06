@@ -12,7 +12,12 @@ docker system prune -f
 ## load variables
 #----------------------------------------------------------
 
-$url = Get-EnvVar -Key CM_HOST
+$urls = @()
+$cmUrl = Get-EnvVar -Key CM_HOST
+
+$urls += $cmUrl
+$altHosts = Get-EnvVar -Key ALT_HOST
+$altHostsList = $altHosts.Replace('`', '').Split(',') | Foreach-Object { $urls += $_ }
 
 #----------------------------------------------------------
 ## check license is present
@@ -29,7 +34,7 @@ if (-not (Test-Path (Join-Path $licensePath "license.xml"))) {
 #----------------------------------------------------------
 
 if (-not (Test-Path .\traefik\certs\cert.pem)) {
-    .\tools\mkcert.ps1 -FullHostName ($url -replace "^.+?(\.)", "")
+    .\tools\mkcert.ps1 -FullHostName $urls
 }
 
 #----------------------------------------------------------
@@ -45,5 +50,5 @@ Read-UserEnvFile
 docker-compose up -d
 
 Wait-SiteResponsive
-Write-Host "`n`nDone... opening https://$($url)" -ForegroundColor DarkGray
-start "https://$url"
+Write-Host "`n`nDone... opening https://$($cmUrl)" -ForegroundColor DarkGray
+start "https://$cmUrl"
