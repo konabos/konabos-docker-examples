@@ -65,7 +65,7 @@ services:
       - .\data\cm\website:C:\deploy
       - .\data\cm\logs:C:\inetpub\wwwroot\App_Data\logs
       - ${LICENSE_PATH}:C:\license
-    entrypoint: powershell -Command "& C:\tools\entrypoints\iis\Development.ps1"
+    entrypoint: powershell -Command "& C:\\tools\\entrypoints\\iis\\Development.ps1"
     mem_limit: ${MEM_LIMIT_CM:-4GB}
     restart: always
     labels:
@@ -87,27 +87,27 @@ services:
       args:
         BASE_IMAGE: ${SITECORE_DOCKER_REGISTRY}sitecore-xp0-xconnect:${SITECORE_VERSION}
         TOOLING_IMAGE: ${SITECORE_TOOLS_REGISTRY}sitecore-docker-tools-assets:${TOOLS_VERSION}
-    environment: 
+    environment:
       SITECORE_LICENSE_LOCATION: C:\license
     volumes:
       - .\data\xconnect:C:\deploy
       - ${LICENSE_PATH}:C:\license
-    entrypoint: powershell -Command "& C:\tools\entrypoints\iis\Development.ps1"
+    entrypoint: powershell -Command "& C:\\tools\\entrypoints\\iis\\Development.ps1"
 
   xdbsearchworker:
-    environment: 
+    environment:
       SITECORE_LICENSE_LOCATION: C:\license
     volumes:
       - ${LICENSE_PATH}:C:\license
 
   xdbautomationworker:
-    environment: 
+    environment:
       SITECORE_LICENSE_LOCATION: C:\license
     volumes:
       - ${LICENSE_PATH}:C:\license
 
   cortexprocessingworker:
-    environment: 
+    environment:
       SITECORE_LICENSE_LOCATION: C:\license
     volumes:
       - ${LICENSE_PATH}:C:\license
